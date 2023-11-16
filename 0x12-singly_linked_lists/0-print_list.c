@@ -1,25 +1,33 @@
-#include <stdio.h>
+/*
+ * File: 0-print_list.c
+ * Auth: Ebenezer
+ */
+
 #include "lists.h"
+#include <stdio.h>
 
 /**
- * print_list - prints the elements of a linked list
- * @h: pointer to the list_t list to print
- * Auth: Ebenezer
- * Return: the number of nodes printed
+ * print_list - Print all the elements of a list list.
+ * @h: The list_t list.
+ *
+ * Return: The number of nodes in h.
  */
+
 size_t print_list(const list_t *h)
 {
-	size_t s = 0;
+	size_t nodes = 0;
 
 	while (h)
 	{
-		if (!h->str)
+		if (h->str == NULL)
 			printf("[0] (nil)\n");
+
 		else
-			printf("[%u] %s\n", h->len, h->str);
+			printf("[%d] %s\n", h->len, h->str);
+
+		nodes++;
 		h = h->next;
-		s++;
 	}
 
-	return (s);
+	return (nodes);
 }
