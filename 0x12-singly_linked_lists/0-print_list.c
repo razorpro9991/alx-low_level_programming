@@ -1,46 +1,25 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include "lists.h"
 
 /**
+ * print_list - prints the elements of a linked list
+ * @h: pointer to the list_t list to print
  * Auth: Ebenezer
- * add_node_end - Adds a new node at the end of a linked list
- * @head: Pointer to the head of the list
- * @str: String to be duplicated and stored in the new node
- *
- * Return: Address of the new element, or NULL if it failed
+ * Return: the number of nodes printed
  */
-list_t *add_node_end(list_t **head, const char *str)
+size_t print_list(const list_t *h)
 {
-	list_t *new_node, *temp;
+	size_t s = 0;
 
-	if (str == NULL)
-		return NULL;  /* Invalid input */
-
-	new_node = malloc(sizeof(list_t));
-
-	if (new_node == NULL)
-		return NULL;  /* Memory allocation failed */
-
-	new_node->str = strdup(str);
-
-	if (new_node->str == NULL) {
-		free(new_node);
-		return NULL;  /* Memory allocation for string duplication failed */
+	while (h)
+	{
+		if (!h->str)
+			printf("[0] (nil)\n");
+		else
+			printf("[%u] %s\n", h->len, h->str);
+		h = h->next;
+		s++;
 	}
 
-	new_node->next = NULL;
-
-	if (*head == NULL) {
-		*head = new_node;
-	} else {
-		temp = *head;
-		while (temp->next != NULL) {
-			temp = temp->next;
-		}
-		temp->next = new_node;
-	}
-
-	return new_node;
+	return (s);
 }
