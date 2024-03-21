@@ -1,0 +1,2 @@
+all: main.c eben.c 
+	gcc main.c eben.c -o eben
