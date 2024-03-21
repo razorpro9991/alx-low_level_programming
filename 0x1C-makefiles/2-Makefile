@@ -1,7 +1,0 @@
-CC = gcc
-SRC = main.c eben.c
-OBJ = $(SRC:.c=.o) 
-NAME = eben
-
-all: $(OBJ)
-	$(CC) $(OBJ) -o $(NAME)
